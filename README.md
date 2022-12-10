@@ -1,4 +1,4 @@
-# Advent of Code 2022 - My solutions
+# Advent of Code 2022
 
 In this repo I am storing my solutions for the puzzles of this year's Advent of Code.
 
