@@ -5,7 +5,7 @@ const fs = require('fs')
 //adds blank spaces as 0 calories
 //adds all calories
 function sumCalories() {
-    fs.readFile("day-1/adv-12-01-input.txt", (err, data) => {
+    fs.readFile("adv-12-01-input.txt", (err, data) => {
         const calories = data.toString().split(/\r?\n/)
         let elfCalories = 0
         const allCalories = []
