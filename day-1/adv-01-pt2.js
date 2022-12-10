@@ -14,10 +14,11 @@ function sumCalories() {
             }
         }
         // sorts arrays in desc order
-        // gets top 3 elf groups with max number of calories
+
         allCalories.sort(function (a, b) {
             return a - b;
         });
+        // gets top 3 elf groups with max number of calories
         let top3 = allCalories.slice(-3);
         //sums top 3 arrays
         const sum = top3.reduce((partialSum, a) => partialSum + a, 0);
