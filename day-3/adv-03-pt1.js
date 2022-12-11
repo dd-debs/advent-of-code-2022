@@ -23,6 +23,20 @@ function setPriorities() {
             const innerArray = partitions[i].length;
             for (let j=0; j<innerArray; j++) {
                 //TODO: loop through the elements of the arrays to find which letter is common & assign priority points (a-z -> 1-26 / A-Z -> 27-52)
+                /*var cubes = [
+                 [1, 2, 3],
+                 [4, 5, 6],
+                 [7, 8, 9],
+                ];
+
+                cubes.forEach(function each(item) {
+                  if (Array.isArray(item)) {
+                    // If is array, continue repeat loop
+                    item.forEach(each);
+                  } else {
+                    console.log(item);
+                  }
+                });*/
             }
         }
 
