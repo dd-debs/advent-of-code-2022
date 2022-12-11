@@ -5,10 +5,10 @@ function playGame() {
         //deletes the space between the letters of each couplet
         const entriesWithoutSpace = entries.replace(/ /g, '');
         //creates one big array where each couplet is an element of the array
-        const macroArray = entriesWithoutSpace.split(/\n/)
+        const rounds = entriesWithoutSpace.split(/\n/)
         let totalScore = []
         //game logic changes -> second char is expected result (x=lose, y=draw, z=win)
-        for (let round of macroArray) {
+        for (let round of rounds) {
             let shapeScore = 0;
             let outcomeScore = 0;
             let totalRoundScore = 0;
