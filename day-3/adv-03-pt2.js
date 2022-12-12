@@ -24,6 +24,7 @@ function setPriorities() {
         let innerArray;
 
         //separates the letters of each compartment
+        //TODO: debug array split / find another solution -> missing the compartments division most likely
         for (let i = 0; i < backpackGroups.length; i++) {
             innerArray = backpackGroups[i];
             letters1 = innerArray[0].split("");
