@@ -3,46 +3,56 @@ function setPriorities() {
     fs.readFile('adv-12-03-input.txt', (err, data) => {
         const entries = data.toString();
         const backpacks = entries.split(/\n/)
-        //console.log(backpacks)
-        //let backpackFinal = [];
-        //let partitions = [];
         const groupItems = 3;
-
+        //forms groups of 3 elements in sub-arrays
         const backpackGroups = backpacks.reduce((resultArray, item, index) => {
             const groupIndex = Math.floor(index / groupItems);
+            //empty array if partition does not work
             if (!resultArray[groupIndex]) {
                 resultArray[groupIndex] = []
             }
-            resultArray[groupIndex].push(item)
+            resultArray[groupIndex].push(item);
             return resultArray
-        }, [])
+        }, []);
 
-        let commonLetters = new Set();
-        let letters1;
-        let letters2;
-        let letters3;
-        let innerArray;
+        //defines alphabet letters priorities
+        let alphabet = [];
+        for (let i=0; i<26; i++) {
+            alphabet.push({letter:String.fromCharCode(i+97), priority: i+1});
+            alphabet.push({letter: String.fromCharCode(i+65), priority: i+27});
+        }
+
+        let commonLetters = [];
+        let resultsArray = [];
 
         //separates the letters of each compartment
-        //TODO: debug array split / find another solution -> missing the compartments division most likely
         for (let i = 0; i < backpackGroups.length; i++) {
-            innerArray = backpackGroups[i];
-            letters1 = innerArray[0].split("");
-            letters2 = innerArray[1].split("");
-            letters3 = innerArray[2].split("");
+            const innerArray = backpackGroups[i];
+            const letters1 = innerArray[0].split('');
+            const letters2 = innerArray[1].split('');
+            const letters3 = innerArray[2].split('');
 
             //checks if the three elements of each inner array have letters in common (!== index -1)
-            for (let j = 0; j < letters1.length; j++) {
-                for (let k = 0; k < letters2.length; k++) {
-                    for (let l = 0; l < letters3.length; l++) {
-                        if (letters1[j].includes(letters2[k]) && letters2[k].includes(letters3[l])) {
-                            commonLetters.add(letters2[k])
-                        }
-                    }
+            for (let j = 0; j<letters1.length; j++) {
+                if (letters2.indexOf(letters1[j]) !== -1 && letters3.indexOf(letters1[j]) !== -1) {
+                    commonLetters.push(letters1[j]);
+                    break;
                 }
             }
+            //creates an array with common letters and respective priorities taken from the alphabet array
+            resultsArray = commonLetters.map(letter => {
+                let alphabetObject = alphabet.find(item => item.letter === letter);
+                return {
+                    letter: letter,
+                    priority: alphabetObject.priority
+                }
+            })
         }
-        console.log(commonLetters);
-    })
+        //gets the sum of priorities
+        const sumOfPriorities = resultsArray.reduce((total, obj) => {
+            return total + obj.priority
+        },0);
+        console.log(sumOfPriorities);
+    });
 }
 setPriorities();
