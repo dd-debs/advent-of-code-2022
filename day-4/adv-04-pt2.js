@@ -13,7 +13,7 @@ function findOverlaps() {
 
             let results = []
 
-            //TODO: add some => includes and min and max comparisons
+            //checks which array couples overlap in any way
             const maxStart = Math.max(ranges[0][0], ranges[1][0]);
             const minEnd = Math.min(ranges[0][1], ranges[1][1]);
 
