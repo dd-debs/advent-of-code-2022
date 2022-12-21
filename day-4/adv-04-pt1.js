@@ -12,7 +12,8 @@ function findOverlaps() {
             let ranges = subArrays.map(range => range.split('-').map(Number))
             let results = []
                 //checks if one range fully includes the other one
-                if (ranges[0][0] >= ranges[1][0] && ranges[0][1] <= ranges[1][1] || ranges[1][0] >= ranges[0][0] && ranges[1][1] <= ranges[0][1]) {
+                if (ranges[0][0] >= ranges[1][0] && ranges[0][1] <= ranges[1][1]
+                    || ranges[1][0] >= ranges[0][0] && ranges[1][1] <= ranges[0][1]) {
                     results.push(ranges)
                 }
                 //counts which ranges include the other ones
